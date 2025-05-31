@@ -29,7 +29,7 @@ ASI Progress
 	- Finished the simulated distribution plot in Section 4.1
 
 	Next time:
-		* Plot the hamiltonean dynamics. Start with naive stochastic HMC without MH
+		* Plot the hamiltonian dynamics. Start with naive stochastic HMC without MH
 
 9. April: total time 3 hours
 
@@ -112,7 +112,12 @@ ASI Progress
 	- Clean up the project folder 
 	- Make a git repo
 
-31. May 
+31. May 2 hours
+
+	- Finished :)
+
+
+TOTAL TIME: 36-38 hours
 
 
 
