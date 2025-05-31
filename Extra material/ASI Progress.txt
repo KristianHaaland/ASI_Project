@@ -1,0 +1,126 @@
+ASI Progress
+
+29. March:
+	- Read through the paper
+
+28. March: Total time 3 hours
+
+	- Started reading through the paper for the second time. Understood most things
+	- First thoughts:
+		* Recreate the synthetic simulations in 4.1. Should be very doable
+		* Should also do 4.2. Then SGHMC gets incorperated with NN learning-
+		* Maybe skip the simulations in 4.3.
+	- Next time:
+		* Finish reading the paper
+		* Start general setup to recreate Section 4.1
+
+2. April: total time 3 hours
+
+	- Plotted true distribution in Section 4.1
+	- Plotted HMC with and without MH in Section 4.1
+	
+	Next time:
+		* Validate that HMC with and without MH works
+		* Implement Naive approaches, check if naive without MH deviates a lot
+		* Experiment with t and m values
+
+7. April: total time 3 hours
+
+	- Finished the simulated distribution plot in Section 4.1
+
+	Next time:
+		* Plot the hamiltonean dynamics. Start with naive stochastic HMC without MH
+
+9. April: total time 3 hours
+
+	- Complered figure 2, works as expected
+
+	Next time:
+		* Diagnose the exploding gradient and how to fix it, think the clipping is why naives works so good
+		* Descide if I should include SGLD or not
+		* Refresh section 4.2
+
+16. April: total time 45 minutes
+
+	- Refreshed Section 4.2
+	- Familiarized myself with the nn class structure
+
+	Next time:
+		* Understand the last bit of the first paragraph of section 4.2
+		* Start coding the NN task		
+
+17. April: total time 2 hours
+
+	- Familiarized with coding a NN
+	- Started coding a NN for SGD
+
+	Next time:
+		* Continue coding the SGD NN
+		* Add SGD with momentum, should be easy
+		* Investigate the best lambda values
+		* Think about the other hyperparameters
+		* Increase the amount of epochs, and store the test errors in lists
+
+11. May: total time 3,5 hours
+
+	- Reviewed code about simpleNN
+	- simpleNN running on Kaggle
+	- Run simpleNN with momentum next, remember to obtain test error lists
+
+	Next time:
+		* Run simpleNN with momentum
+		* Recap SGHMC in NNs, start implementing the code
+
+12. May 2 hours
+
+	- Got reliable results from simpleNN and simpleNN with momentum, time to start SGHMC
+
+14. May total time 2 hours
+
+	- Wrote on the report
+	- Have to ask the professor about Bayesian NN implementation
+
+15. May total time 4 hours
+
+	- Started to investigate burn-in samples needed. 
+	- Initial testing showed that noise dominates over the gradient values. So the updates are random, not in the direction of any gradient
+	- Also some eps and C makes theta and r values explode
+	- The choice of eps and C has a lot to say. C=0.1 eps=0.001 started giving good results when fixing lambda=1e-2 to a fixed small value. Now it 	  	  behaves as it should. Also I used noise = torch.zeros_like(param.data)
+	- The problem is the injected noise noise = torch.randn_like(param.data) * torch.sqrt(torch.tensor(2 * C * eps)). It overpowers the gradient values, and the model doesnt learn anything. 
+	- eps=0.001 C=0.001 starts to give results. Test error goes down to 0.5 after about 100 epochs, which is a massive improvement from 0.9
+	- eps=0.001 C=0.0001 even better. Test error = 0.3 after 100 epochs
+	- eops=0.001 C=0.00001 and test error = 0.255 after 100 epochs. After 50 epochs test error = 0.4394
+	- Conclusion: Choose 100 burn in samples
+
+	Next time:
+	- Think about if normal HMC makes sence up until after burn-in, since that is when friction is useful
+	- Obtain final result
+	- Write on the report
+
+20. May 3 hours
+
+	- Fixed up the first simulation, now works
+
+21. May 4 hours
+
+	- Wrote abstract, results and conclusion on the report
+	- Settle for not a perfect Bayesian NN model, but rather explain what goes wrong
+	
+	Next time:
+	- Make plot of test errors for the NNs
+	- Polish the report
+	- Clean up the project folder 
+	- Make a git repo
+
+31. May 
+
+
+
+
+
+
+
+
+
+
+
